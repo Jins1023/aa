@@ -28,20 +28,20 @@
 
   <!-- 通常の画像たち（前面） -->
   <img src="image/6.png" alt="6" id="img6" class="fly-in"
-       style="top: 143px; left: 129px; width: 980px; z-index: 10;">
+       style="top: 143px; left: -75px; width: 980px; z-index: 10;">
   
   <img src="image/年.png" alt="年" id="imgYear" class="fly-in"
-       style="top: 143px; left: 326px; width: 980px; z-index: 10;">
+       style="top: 143px; left: 92px; width: 980px; z-index: 10;">
   
   <img src="image/3.png" alt="3" id="img3" class="fly-in"
-       style="top: 143px; left: 510px; width: 980px; z-index: 10;">
+       style="top: 143px; left: 280px; width: 980px; z-index: 10;">
   
   <img src="image/組.png" alt="組" id="imgClass" class="fly-in"
-       style="top: 143px; left: 694px; width: 980px; z-index: 10;">
+       style="top: 143px; left: 471px; width: 980px; z-index: 10;">
 
   <!-- 爆弾画像（初期は非表示・後ろに表示） -->
   <img src="image/img_bomb.png" alt="爆弾" id="imgBomb" class="fly-in"
-       style="top: -8px; left: 410px; width: 980px; z-index: 0;">
+       style="top: -23px; left: 248px; width: 980px; z-index: 0;">
 
   <script>
     window.addEventListener('load', () => {
@@ -94,7 +94,7 @@
        alt="ムービーニコニコワークス"
        id="imgMovie"
        class="fade-slide-in"
-       style="top: 387px; left: 605px; width: 611px;">
+       style="top: 387px; left: 398px; width: 611px;">
 
   <script>
     window.addEventListener('load', () => {
@@ -143,7 +143,7 @@
        alt="おしらせ"
        id="imgNotice"
        class="fade-slide-up"
-       style="top: 909px; left: 543px; width: 729px;">
+       style="top: 909px; left: 377px; width: 729px;">
 
   <script>
     const target = document.getElementById('imgNotice');
@@ -192,43 +192,14 @@
   <div style="height: 1000px;"></div> <!-- スクロール用スペース -->
 
   <!-- 4つのおしらせ1画像 -->
-  <img src="image/おしらせ1.png" alt="おしらせ1" class="notice-image" id="imgNotice1" style="top: -820px; left: 100px; width: 526px;">
-  <img src="image/おしらせ1.png" alt="おしらせ2" class="notice-image" id="imgNotice2" style="top: -820px; left: -65px; width: 526px;">
-  <img src="image/おしらせ1.png" alt="おしらせ3" class="notice-image" id="imgNotice3" style="top: -820px; left: -234px; width: 526px;">
-  <img src="image/おしらせ1.png" alt="おしらせ4" class="notice-image" id="imgNotice4" style="top: -1121px; left: 1266px; width: 526px;">
+  <img src="image/おしらせ1.png" alt="おしらせ1" class="notice-image" id="imgNotice1" style="top: -820px; left: 88px; width: 526px;">
+  <img src="image/おしらせ1.png" alt="おしらせ2" class="notice-image" id="imgNotice2" style="top: -820px; left: -78px; width: 526px;">
+  <img src="image/おしらせ1.png" alt="おしらせ3" class="notice-image" id="imgNotice3" style="top: -1122px; left: 831px; width: 526px;">
+
 
 </body>
 </html>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>フレーム固定表示</title>
-  <style>
-    body {
-      height: 0px; /* スクロール用に長くする */
-      margin: 0;
-    }
-
-    /* フレーム画像を最背面に配置し、スクロールしても固定 */
-    #frame {
-      position: fixed;  /* スクロールしても画面に固定 */
-      top: 0;
-      left: 0;
-      width: 105%;  /* 画面全体に広がる */
-      height: auto;
-      z-index: -1;  /* 一番後ろに配置 */
-    }
-  </style>
-</head>
-<body>
-
-  <!-- フレーム画像を最背面に配置し、スクロールしても固定 -->
-  <img src="image/フレーム.png" alt="フレーム" id="frame">
-  
-</body>
-</html>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -239,7 +210,7 @@
     #activity {
       position: absolute;
       top: 1524px;   /* 表示位置のY座標（必要に応じて変更） */
-      left: 720px;  /* 表示位置のX座標（必要に応じて変更） */
+      left: 552px;  /* 表示位置のX座標（必要に応じて変更） */
       width: 405px; /* 表示サイズ（必要に応じて変更） */
       height: auto;
     }
@@ -292,7 +263,7 @@
     #activityText {
       position: absolute;
       top: 1630px;   /* Y座標位置を必要に応じて調整 */
-      left: 668px;  /* X座標位置を必要に応じて調整 */
+      left: 477px;  /* X座標位置を必要に応じて調整 */
       width: 976px; /* サイズ変更もOK */
       height: auto;
       animation: moveUpDown 4s linear infinite;
@@ -323,7 +294,7 @@
     #niconico {
       position: absolute;
       top: 1615px;   /* Y座標調整 */
-      left: 90px;   /* X座標調整 */
+      left: -113px;   /* X座標調整 */
       width: 1007px;  /* 画像サイズ調整 */
       height: auto;
       animation: floatUpDown 3s ease-in-out infinite;
@@ -346,8 +317,8 @@
   <style>
     #shape2 {
       position: absolute;
-      top: 1422px;   /* 必要に応じてY座標を変更 */
-      left: 1559px;   /* 必要に応じてX座標を変更 */
+      top: 1331px;   /* 必要に応じてY座標を変更 */
+      left: 1215px;   /* 必要に応じてX座標を変更 */
       width: 206px;  /* 画像のサイズ（調整可能） */
       height: auto;
     }
@@ -361,7 +332,7 @@
 </body>
 </html>
 
-<img src="image/今週の写真.png" alt="今週の写真" style="position: absolute; left: 496px; top: 2101px; width: 747px;">
+<img src="image/今週の写真.png" alt="今週の写真" style="position: absolute; left: 369px; top: 2101px; width: 747px;">
 
 
   <!-- ここからは毎週更新の画像！！！！！！！！！！ -->
@@ -428,9 +399,9 @@
 
   <!-- サムネイル画像 -->
   <img src="サムネ/テスト画像1.png" class="test-image" style="left: 55px; top: 2371px; width: 454px;" data-target="zoom1">
-  <img src="サムネ/テスト画像1.png" class="test-image" style="left: 482px; top: 2371px; width: 454px;" data-target="zoom2">
-  <img src="サムネ/テスト画像1.png" class="test-image" style="left: 898px; top: 2371px; width: 454px;" data-target="zoom3">
- <img src="サムネ/テスト画像1.png" class="test-image" style="left: 1334px; top: 2371px; width: 454px;" data-target="zoom4">
+  <img src="サムネ/テスト画像1.png" class="test-image" style="left: 511px; top: 2371px; width: 454px;" data-target="zoom2">
+  <img src="サムネ/テスト画像1.png" class="test-image" style="left: 946px; top: 2371px; width: 454px;" data-target="zoom3">
+
 
   <!-- 背景ぼかし -->
   <div id="blurBackground"></div>
@@ -490,8 +461,8 @@
     /* ボタンのスタイル */
     #scrollButton {
       position: absolute;
-      left: 698px;   /* 横位置 */
-      top: 2738px;    /* 縦位置 */
+      left: 322px;   /* 横位置 */
+      top: 3250px;    /* 縦位置 */
       width: 410px;  /* 幅 */
       height: auto;
       cursor: pointer;
@@ -565,8 +536,8 @@
   <style>
     #videoImage {
       position: absolute;
-      top: 2749px;   /* 縦位置 */
-      left: 486px;  /* 横位置 */
+      top: 2603px;   /* 縦位置 */
+      left: 358px;  /* 横位置 */
       width: 785px; /* 幅 */
       height: auto; /* 高さは自動調整 */
     }
@@ -626,8 +597,8 @@
   <script>
     // 動画1の座標と大きさを変更
     const videoContainer1 = document.getElementById('video1');
-    videoContainer1.style.top = "3050px";   // Y座標
-    videoContainer1.style.left = "1000px";  // X座標
+    videoContainer1.style.top = "2900px";   // Y座標
+    videoContainer1.style.left = "100px";  // X座標
     videoContainer1.style.width = "600px";  // 幅
     videoContainer1.style.height = "340px"; // 高さ
     // 動画ファイルの変更
@@ -635,8 +606,8 @@
 
     // 動画2の座標と大きさを変更
     const videoContainer2 = document.getElementById('video2');
-    videoContainer2.style.top = "3050px";   // Y座標
-    videoContainer2.style.left = "200px";   // X座標
+    videoContainer2.style.top = "2900px";   // Y座標
+    videoContainer2.style.left = "800px";   // X座標
     videoContainer2.style.width = "600px";  // 幅
     videoContainer2.style.height = "340px"; // 高さ
     // 動画ファイルの変更
@@ -659,7 +630,7 @@
   <style>
     #scrollButton2 {
       position: absolute;
-      top: 3425px;   /* Y座標 */
+      top: 3250px;   /* Y座標 */
       left: 697px;  /* X座標 */
       width: 418px;
       height: auto;
