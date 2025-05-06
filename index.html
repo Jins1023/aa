@@ -403,8 +403,28 @@
   <img src="サムネ/テスト画像1.png" class="test-image" style="left: 946px; top: 2371px; width: 454px;" data-target="zoom3">
 
 
-  <!-- 背景ぼかし -->
-  <div id="blurBackground"></div>
+<!-- 背景ぼかし -->
+<div id="blurBackground"></div>
+
+<style>
+  #blurBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(8px); /* ぼかし効果 */
+    background-color: rgba(0, 0, 0, 0.4); /* 半透明背景 */
+    z-index: 1;
+    width: 50000vw;  /* 初期幅 */
+    height: 50000vh; /* 初期高さ */
+  }
+</style>
+
+<script>
+  // サイズ変更
+  const blurBackground = document.getElementById('blurBackground');
+  blurBackground.style.width = "50000px";  // 横幅
+  blurBackground.style.height = "50000px"; // 高さ
+</script>
 
   <!-- 拡大画像 -->
   <img id="zoom1" class="zoomedImage" src="アルバム/テスト画像.jpg">
