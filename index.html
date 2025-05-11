@@ -1,701 +1,411 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>順番に飛び出す画像＋爆弾</title>
-  <style>
-    .fly-in {
-      position: absolute;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-    }
-
-    .show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* 爆弾画像だけ z-index を低くする（後ろに表示） */
-    #imgBomb {
-      z-index: 0;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 通常の画像たち（前面） -->
-  <img src="image/6.png" alt="6" id="img6" class="fly-in"
-       style="top: 143px; left: -75px; width: 980px; z-index: 10;">
-  
-  <img src="image/年.png" alt="年" id="imgYear" class="fly-in"
-       style="top: 143px; left: 92px; width: 980px; z-index: 10;">
-  
-  <img src="image/3.png" alt="3" id="img3" class="fly-in"
-       style="top: 143px; left: 280px; width: 980px; z-index: 10;">
-  
-  <img src="image/組.png" alt="組" id="imgClass" class="fly-in"
-       style="top: 143px; left: 471px; width: 980px; z-index: 10;">
-
-  <!-- 爆弾画像（初期は非表示・後ろに表示） -->
-  <img src="image/img_bomb.png" alt="爆弾" id="imgBomb" class="fly-in"
-       style="top: -23px; left: 248px; width: 980px; z-index: 0;">
-
-  <script>
-    window.addEventListener('load', () => {
-      const images = [
-        document.getElementById('img6'),
-        document.getElementById('imgYear'),
-        document.getElementById('img3'),
-        document.getElementById('imgClass')
-      ];
-
-      images.forEach((img, index) => {
-        setTimeout(() => {
-          img.classList.add('show');
-        }, index * 500); // 順番に表示
-      });
-
-      // 爆弾画像は3秒後に表示
-      setTimeout(() => {
-        document.getElementById('imgBomb').classList.add('show');
-      }, 200);
-    });
-  </script>
-
-</body>
-</html>
-  
-  <!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>ムービーニコニコワークス表示</title>
-  <style>
-    .fade-slide-in {
-      position: absolute;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: transform 1s ease-out, opacity 1s ease-out;
-    }
-
-    .fade-show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ムービーニコニコワークス画像：位置・サイズは自由に変更可能 -->
-  <img src="image/ムービーニコニコワークス.png"
-       alt="ムービーニコニコワークス"
-       id="imgMovie"
-       class="fade-slide-in"
-       style="top: 387px; left: 398px; width: 611px;">
-
-  <script>
-    window.addEventListener('load', () => {
-      // 3秒後にフェードスライド表示
-      setTimeout(() => {
-        document.getElementById('imgMovie').classList.add('fade-show');
-      }, 2000);
-    });
-  </script>
-
-</body>
-</html>
-
-
-  
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>スクロールアニメーション（座標自由）</title>
-  <style>
-    body {
-      height: 1000px; /* スクロール用に長くする */
-      position: relative;
-    }
-
-    .fade-slide-up {
-      position: absolute; /* ← 修正ポイント */
-      opacity: 0;
-      transform: translateY(50px);
-      transition: transform 1s ease-out, opacity 1s ease-out;
-    }
-
-    .fade-show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
-</head>
-<body>
-
-  <div style="height: 1000px;"></div> <!-- スクロール用スペース -->
-
-  <!-- おしらせ画像：X座標とY座標自由に設定 -->
-  <img src="image/おしらせ.png"
-       alt="おしらせ"
-       id="imgNotice"
-       class="fade-slide-up"
-       style="top: 909px; left: 377px; width: 729px;">
-
-  <script>
-    const target = document.getElementById('imgNotice');
-
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          target.classList.add('fade-show');
-          obs.unobserve(entry.target);
-        }
-      });
-    });
-
-    observer.observe(target);
-  </script>
-
-</body>
-</html>
-  
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>おしらせ1 横並び＋拡大アニメーション</title>
-  <style>
-    body {
-      height: 2000px; /* スクロール用に長くする */
-      position: relative;
-    }
-
-    .notice-image {
-      width: 200px;  /* 初期サイズ */
-      height: auto;  /* 高さは自動調整 */
-      margin-right: 20px; /* 横並びにするためのスペース */
-      position: relative;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .notice-image:hover {
-      transform: scale(1.1); /* マウスオーバーで少し拡大 */
-    }
-  </style>
-</head>
-<body>
-
-  <div style="height: 1000px;"></div> <!-- スクロール用スペース -->
-
-  <!-- 4つのおしらせ1画像 -->
-  <img src="image/おしらせ1.png" alt="おしらせ1" class="notice-image" id="imgNotice1" style="top: -820px; left: 88px; width: 526px;">
-  <img src="image/おしらせ1.png" alt="おしらせ2" class="notice-image" id="imgNotice2" style="top: -820px; left: -78px; width: 526px;">
-  <img src="image/おしらせ1.png" alt="おしらせ3" class="notice-image" id="imgNotice3" style="top: -1122px; left: 831px; width: 526px;">
-
-
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>活動内容の表示</title>
-  <style>
-    #activity {
-      position: absolute;
-      top: 1524px;   /* 表示位置のY座標（必要に応じて変更） */
-      left: 552px;  /* 表示位置のX座標（必要に応じて変更） */
-      width: 405px; /* 表示サイズ（必要に応じて変更） */
-      height: auto;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 活動内容の画像表示 -->
-  <img src="image/活動内容.png" alt="活動内容" id="activity">
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>図形の表示</title>
-  <style>
-    #shape {
-      position: absolute;
-      top: 1006px;   /* 表示位置のY座標（調整可能） */
-      left: 312px;   /* 表示位置のX座標（調整可能） */
-      width: 272px;  /* 画像の幅（必要に応じて変更） */
-      height: auto;
-      animation: rotateBackAndForth 6s infinite ease-in-out; /* アニメーション追加 */
-    }
-
-    /* 回転アニメーションの定義（ゆっくり往復回転） */
-    @keyframes rotateBackAndForth {
-      0% { transform: rotate(0deg); }
-      50% { transform: rotate(15deg); }
-      100% { transform: rotate(0deg); }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 図形の画像表示 -->
-  <img src="image/図形.png" alt="図形" id="shape">
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>活動内容文のアニメーション</title>
-  <style>
-    /* 上下移動アニメーション */
-    @keyframes moveUpDown {
-      0%   { transform: translateY(0); }
-      50%  { transform: translateY(30px); }
-      100% { transform: translateY(0); }
-    }
-
-    #activityText {
-      position: absolute;
-      top: 1630px;   /* Y座標位置を必要に応じて調整 */
-      left: 477px;  /* X座標位置を必要に応じて調整 */
-      width: 976px; /* サイズ変更もOK */
-      height: auto;
-      animation: moveUpDown 4s linear infinite;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 活動内容文の画像 -->
-  <img src="image/活動内容文.png" alt="活動内容文" id="activityText">
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>ニコニコ画像ふわふわ</title>
-  <style>
-    /* ふわふわ上下移動 */
-    @keyframes floatUpDown {
-      0%   { transform: translateY(0); }
-      50%  { transform: translateY(20px); }
-      100% { transform: translateY(0); }
-    }
-
-    #niconico {
-      position: absolute;
-      top: 1615px;   /* Y座標調整 */
-      left: -113px;   /* X座標調整 */
-      width: 1007px;  /* 画像サイズ調整 */
-      height: auto;
-      animation: floatUpDown 3s ease-in-out infinite;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ニコニコ画像 -->
-  <img src="image/ニコニコ.png" alt="ニコニコ" id="niconico">
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>図形2の表示</title>
-  <style>
-    #shape2 {
-      position: absolute;
-      top: 1331px;    /* 必要に応じてY座標を変更 */
-      left: 1215px;   /* 必要に応じてX座標を変更 */
-      width: 206px;   /* 画像のサイズ（調整可能） */
-      height: auto;
-      animation: rotateBackAndForthReverse 6s infinite ease-in-out; /* アニメーション追加 */
-    }
-
-    /* 反時計回りの反復回転アニメーション */
-    @keyframes rotateBackAndForthReverse {
-      0%   { transform: rotate(0deg); }
-      50%  { transform: rotate(-15deg); }
-      100% { transform: rotate(0deg); }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 図形2の画像 -->
-  <img src="image/図形2.png" alt="図形2" id="shape2">
-
-</body>
-</html>
-
-<img src="image/今週の写真.png" alt="今週の写真" style="position: absolute; left: 369px; top: 2101px; width: 747px; animation: floatUpDown 3s ease-in-out infinite;">
-
-<style>
-  @keyframes floatUpDown {
-    0%   { transform: translateY(0px); }
-    50%  { transform: translateY(-10px); } /* 上に10px移動 */
-    100% { transform: translateY(0px); }
-  }
-</style>
-
-
-  <!-- ここからは毎週更新の画像！！！！！！！！！！ -->
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>カスタマイズ可能な画像ギャラリー</title>
-  <style>
-    .test-image {
-      position: absolute;
-      transition: transform 0.3s;
-      cursor: pointer;
-    }
-
-    .test-image:hover {
-      transform: scale(1.2);
-    }
-
-    #blurBackground {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-      backdrop-filter: blur(5px);
-    }
-
-    .zoomedImage {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60%;
-      z-index: 2;
-      transition: opacity 0.5s;
-    }
-
-    #closeButton {
-      display: none;
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 10px 15px;
-      font-size: 16px;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 3;
-    }
-
-    #closeButton:hover {
-      background-color: #eee;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- サムネイル画像 -->
-  <img src="サムネ/テスト画像1.png" class="test-image" style="left: 55px; top: 2371px; width: 454px;" data-target="zoom1">
-  <img src="サムネ/テスト画像1.png" class="test-image" style="left: 511px; top: 2371px; width: 454px;" data-target="zoom2">
-  <img src="サムネ/テスト画像1.png" class="test-image" style="left: 946px; top: 2371px; width: 454px;" data-target="zoom3">
-
-
-<!-- 背景ぼかし -->
-<div id="blurBackground"></div>
-
-<style>
-  #blurBackground {
-    position: fixed;
-    top: 0;
-    left: 0;
-    backdrop-filter: blur(8px); /* ぼかし効果 */
-    background-color: rgba(0, 0, 0, 0.4); /* 半透明背景 */
-    z-index: 1;
-    width: 50000vw;  /* 初期幅 */
-    height: 50000vh; /* 初期高さ */
-  }
-</style>
-
-<script>
-  // サイズ変更
-  const blurBackground = document.getElementById('blurBackground');
-  blurBackground.style.width = "50000px";  // 横幅
-  blurBackground.style.height = "50000px"; // 高さ
-</script>
-
-  <!-- 拡大画像 -->
-  <img id="zoom1" class="zoomedImage" src="アルバム/テスト画像.jpg">
-  <img id="zoom2" class="zoomedImage" src="アルバム/テスト画像2.jpg">
-  <img id="zoom3" class="zoomedImage" src="アルバム/テスト画像3.jpg">
-
-
-
-  <!-- 閉じるボタン（テキスト） -->
-  <button id="closeButton">閉じる</button>
-
-  <script>
-    const thumbnails = document.querySelectorAll('.test-image');
-    const blur = document.getElementById('blurBackground');
-    const closeBtn = document.getElementById('closeButton');
-    const zoomImages = document.querySelectorAll('.zoomedImage');
-
-    thumbnails.forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        const targetId = thumb.dataset.target;
-        zoomImages.forEach(img => img.style.display = 'none');
-        const targetZoom = document.getElementById(targetId);
-        if (targetZoom) {
-          blur.style.display = 'block';
-          targetZoom.style.display = 'block';
-          closeBtn.style.display = 'block';
-        }
-      });
-    });
-
-    closeBtn.addEventListener('click', () => {
-      blur.style.display = 'none';
-      zoomImages.forEach(img => img.style.display = 'none');
-      closeBtn.style.display = 'none';
-    });
-  </script>
-
-</body>
-</html>
-
-<!-- ここからは毎週更新の画像！！！！！！！！！！ -->
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>カスタムスクロールボタン</title>
+  <title>ピースマネージャー</title>
   <style>
     body {
       margin: 0;
       padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
     }
 
-    /* ボタンのスタイル */
-    #scrollButton {
+    #logo {
       position: absolute;
-      left: 322px;   /* 横位置 */
-      top: 3250px;    /* 縦位置 */
-      width: 410px;  /* 幅 */
-      height: auto;
-      cursor: pointer;
-      z-index: 1;    /* 最前面ではないが隠れない */
+      width: 730px;
+      animation: float 3s ease-in-out infinite;
     }
 
-    /* ページを長くするための空要素 */
-    #spacer {
-      height: 3000px; /* 必要なだけ長くしてOK */
-      background-color: transparent;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- スクロールボタン -->
-  <img
-    id="scrollButton"
-    src="image/写真ボタン1.png"
-    alt="スクロールボタン"
-    onmouseover="this.src='image/写真ボタン2.png'"
-    onmouseout="this.src='image/写真ボタン1.png'"
-  >
-
-  <!-- スクロール先に到達するための空間 -->
-  <div id="spacer"></div>
-
-  <script>
-    // ← ここを好きなスクロール位置(px)に変更できる
-    const scrollTargetY = 5000; // 例えば1800px下へスクロール
-
-    document.getElementById('scrollButton').addEventListener('click', function () {
-      window.scrollTo({
-        top: scrollTargetY,
-        behavior: 'smooth'
-      });
-    });
-  </script>
-
-</body>
-</html>
-
-
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>今月の動画表示</title>
-  <style>
-    /* アニメーションの定義 */
-    @keyframes floatUpDown {
+    /* 上下にふわふわ動くアニメーション */
+    @keyframes float {
       0%   { transform: translateY(0); }
-      50%  { transform: translateY(-10px); }
+      50%  { transform: translateY(-13px); }
       100% { transform: translateY(0); }
     }
-
-    #videoImage {
-      position: absolute;
-      top: 2603px;   /* Y座標 */
-      left: 358px;   /* X座標 */
-      width: 785px;  /* 幅 */
-      height: auto;  /* 高さは自動調整 */
-      animation: floatUpDown 3s ease-in-out infinite;
-    }
   </style>
 </head>
 <body>
 
-  <img id="videoImage" src="image/今月の動画.png" alt="今月の動画">
-
-</body>
-</html>
-    
-   <!-- ここは毎月更新するよ！！！！！！！！！！！！！ --> 
-
-    <!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>動画表示</title>
-  <style>
-    /* 動画コンテナのスタイル */
-    .video-container {
-      position: absolute;
-      width: 600px; /* 幅 */
-      height: 340px; /* 高さ */
-      border-radius: 15px; /* 角を丸くする */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ドロップシャドウ */
-      overflow: hidden; /* 丸い角に合わせて動画を切り取る */
-    }
-
-    /* 動画1と2のスタイル（共通化） */
-    .video-container video {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 動画1 -->
-  <div class="video-container" id="video1">
-    <video controls>
-      <source src="movie/テスト動画.mp4" type="video/mp4">
-      お使いのブラウザでは動画がサポートされていません。
-    </video>
-  </div>
-
-  <!-- 動画2 -->
-  <div class="video-container" id="video2">
-    <video controls>
-      <source src="movie/テスト動画.mp4" type="video/mp4">
-      お使いのブラウザでは動画がサポートされていません。
-    </video>
-  </div>
+  <!-- 画像を表示 -->
+  <img id="logo" src="image/logo.png" alt="ロゴ">
 
   <script>
-    // 動画1の座標と大きさを変更
-    const videoContainer1 = document.getElementById('video1');
-    videoContainer1.style.top = "2900px";   // Y座標
-    videoContainer1.style.left = "100px";  // X座標
-    videoContainer1.style.width = "600px";  // 幅
-    videoContainer1.style.height = "340px"; // 高さ
-    // 動画ファイルの変更
-    videoContainer1.querySelector('video source').src = "movie/テスト動画.mp4";
+    const logo = document.getElementById('logo');
 
-    // 動画2の座標と大きさを変更
-    const videoContainer2 = document.getElementById('video2');
-    videoContainer2.style.top = "2900px";   // Y座標
-    videoContainer2.style.left = "800px";   // X座標
-    videoContainer2.style.width = "600px";  // 幅
-    videoContainer2.style.height = "340px"; // 高さ
-    // 動画ファイルの変更
-    videoContainer2.querySelector('video source').src = "movie/テスト動画.mp4";
+    // 画像の座標を自由に設定（例：x=150, y=200）
+    function setLogoPosition(x, y) {
+      logo.style.left = `${x}px`;
+      logo.style.top = `${y}px`;
+    }
+
+    // 例として初期位置を設定
+    setLogoPosition(360, 10);
   </script>
 
 </body>
 </html>
-
-</body>
-</html>
-
-<!-- ここは毎月更新するよ！！！！！！！！！！！！！ --> 
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>マウスホバー画像ボタン</title>
+  <title>傾くだけの図形</title>
   <style>
-    #scrollButton2 {
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+
+    #shape {
       position: absolute;
-      top: 3250px;   /* Y座標 */
-      left: 697px;  /* X座標 */
-      width: 418px;
-      height: auto;
-      cursor: pointer;
+      width: 136px;
+      animation: tilt 3s ease-in-out infinite;
+    }
+
+    /* 傾くだけのアニメーション */
+    @keyframes tilt {
+      0%   { transform: rotate(0deg); }
+      50%  { transform: rotate(10deg); }
+      100% { transform: rotate(0deg); }
     }
   </style>
 </head>
 <body>
 
-
-
-  <!-- ボタン画像 -->
-  <img id="scrollButton2" src="image/動画ボタン1.png" alt="動画ボタン">
+  <!-- 画像を表示 -->
+  <img id="shape" src="image/図形1.png" alt="図形1">
 
   <script>
-    const button = document.getElementById('scrollButton2');
+    const shape = document.getElementById('shape');
 
-    // ホバーで画像を変更
-    button.addEventListener('mouseover', () => {
-      button.src = "image/動画ボタン2.png";
-    });
+    // 座標を変更する関数
+    function setShapePosition(x, y) {
+      shape.style.left = `${x}px`;
+      shape.style.top = `${y}px`;
+    }
 
-    button.addEventListener('mouseout', () => {
-      button.src = "image/動画ボタン1.png";
-    });
-
-    // クリックでスクロール（ここでは #video2 にスクロール）
-    button.addEventListener('click', () => {
-      const target = document.getElementById('video2');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
+    // 任意の座標に設定
+    const X座標 = 70;
+    const Y座標 = 150;
+    setShapePosition(X座標, Y座標);
   </script>
 
 </body>
 </html>
-    
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>図形2</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+
+    #shape2 {
+      position: absolute;
+      width: 264px;
+      animation: tiltReverse 3s ease-in-out infinite;
+    }
+
+    /* 逆回転アニメーション */
+    @keyframes tiltReverse {
+      0%   { transform: rotate(0deg); }
+      50%  { transform: rotate(-10deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 図形2（逆回転） -->
+  <img id="shape2" src="image/図形2.png" alt="図形2">
+
+  <script>
+    // 図形2の座標を設定する
+    function setShapePosition(x, y) {
+      const element = document.getElementById('shape2');
+      element.style.left = `${x}px`;
+      element.style.top = `${y}px`;
+    }
+
+    // 任意の座標に設定（例）
+    setShapePosition(1250, 370);
+  </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>背景画像表示</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+
+    /* 背景画像のスタイル */
+    #frame {
+      position: absolute;
+      top: 150px;     /* Y座標を調整 */
+      left: 400px;    /* X座標を調整 */
+      width: 41vw; /* 幅を調整 */
+      height: auto; /* 高さは比率維持 */
+      z-index: 0;   /* 一番後ろに表示 */
+      pointer-events: none; /* マウスイベントを無効化 */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 背景として表示する画像 -->
+  <img id="frame" src="image/ピースフレーム.png" alt="ピースフレーム">
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>カウントとアニメーション</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    #counter {
+      position: absolute;
+      top: 252px;
+      left: 578px;
+      font-size: 130px;
+      font-weight: bold;
+      color: #ffffff;
+      transition: transform 0.2s ease;
+    }
+
+    .bounce {
+      animation: bounceAnim 0.3s ease;
+    }
+
+    @keyframes bounceAnim {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .button {
+      position: absolute;
+      width: 270px;
+      height: auto;
+      cursor: pointer;
+    }
+
+    #eraser { top: 458px; left: 432px; }
+    #yobikake { top: 458px; left: 728px; }
+    #sonota { top: 567px; left: 432px; }
+    #herasu { top: 567px; left: 728px; }
+
+    .input-label {
+      position: absolute;
+      color: #000;
+      font-weight: bold;
+    }
+
+    #sonotaInputLabel {
+      top: 720px;
+      left: 870px;
+    }
+
+    #sonotaInput {
+      position: absolute;
+      top: 605px;
+      left: 1315px;
+      width: 170px;
+      height: 41px;
+      resize: both;
+      overflow: auto;
+    }
+
+    #herasuInputLabel {
+      top: 720px;
+      left: 1190px;
+    }
+
+    #herasuInput {
+      position: absolute;
+      top: 669px;
+      left: 1315px;
+      width: 170px;
+      height: 41px;
+      resize: both;
+      overflow: auto;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="counter">0</div>
+  <img id="eraser" src="image/黒板消し1.png" alt="黒板消し" class="button">
+  <img id="yobikake" src="image/呼びかけ1.png" alt="呼びかけ" class="button">
+  <img id="sonota" src="image/その他1.png" alt="その他" class="button">
+  <img id="herasu" src="image/減らす1.png" alt="減らす" class="button">
+  <div id="sonotaInputLabel"></div>
+  <input type="number" id="sonotaInput" value="1">
+  <div id="herasuInputLabel"></div>
+  <input type="number" id="herasuInput" value="1">
+  <audio id="coinSound" src="image/coin.mp3"></audio>
+  <audio id="heruSound" src="image/減る.mp3"></audio>
+
+  <script>
+    const counter = document.getElementById('counter');
+    let count = parseInt(localStorage.getItem('count') || '0');
+    counter.textContent = count;
+
+    function updateCount(newValue) {
+      count = newValue;
+      counter.textContent = count;
+      localStorage.setItem('count', count);
+      counter.classList.add('bounce');
+      setTimeout(() => counter.classList.remove('bounce'), 300);
+    }
+
+    function playSound(audioId, times) {
+      for (let i = 0; i < times; i++) {
+        const audio = document.getElementById(audioId).cloneNode();
+        audio.play();
+      }
+    }
+
+    const eraser = document.getElementById('eraser');
+    eraser.addEventListener('mouseover', () => eraser.src = 'image/黒板消し2.png');
+    eraser.addEventListener('mouseout', () => eraser.src = 'image/黒板消し1.png');
+    eraser.addEventListener('click', () => {
+      updateCount(count + 1);
+      playSound('coinSound', 1);
+    });
+
+    const yobikake = document.getElementById('yobikake');
+    yobikake.addEventListener('mouseover', () => yobikake.src = 'image/呼びかけ2.png');
+    yobikake.addEventListener('mouseout', () => yobikake.src = 'image/呼びかけ1.png');
+    yobikake.addEventListener('click', () => {
+      updateCount(count + 1);
+      playSound('coinSound', 1);
+    });
+
+    const sonota = document.getElementById('sonota');
+    const sonotaInput = document.getElementById('sonotaInput');
+    sonota.addEventListener('mouseover', () => sonota.src = 'image/その他2.png');
+    sonota.addEventListener('mouseout', () => sonota.src = 'image/その他1.png');
+    sonota.addEventListener('click', () => {
+      const val = parseInt(sonotaInput.value) || 1;
+      updateCount(count + val);
+      playSound('coinSound', val);
+    });
+
+    const herasu = document.getElementById('herasu');
+    const herasuInput = document.getElementById('herasuInput');
+    herasu.addEventListener('mouseover', () => herasu.src = 'image/減らす2.png');
+    herasu.addEventListener('mouseout', () => herasu.src = 'image/減らす1.png');
+    herasu.addEventListener('click', () => {
+      const val = parseInt(herasuInput.value) || 1;
+      updateCount(count - val);
+      playSound('heruSound', val);
+    });
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>増加量画像表示</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    /* 増加量画像を表示 */
+    #increaseAmount {
+      position: absolute;
+      top: 583px;   /* 任意の座標 */
+      left: 1033px;  /* 任意の座標 */
+      width: 273px; /* 任意のサイズ */
+      height: auto; /* 比率を保つ */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 増加量画像 -->
+  <img id="increaseAmount" src="image/増加量.png" alt="増加量">
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>減少量画像表示</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    /* 減少量画像を表示 */
+    #decreaseAmount {
+      position: absolute;
+      top: 646px;   /* 任意の座標 */
+      left: 1154px;  /* 任意の座標 */
+      width: 167px; /* 任意のサイズ */
+      height: auto; /* 比率を保つ */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 減少量画像 -->
+  <img id="decreaseAmount" src="image/減少量.png" alt="減少量">
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>テキスト表示</title>
+  <style>
+    #text {
+      position: absolute;
+      left: 11px;     /* X座標 */
+      top: 731px;      /* Y座標 */
+      font-size: 19px; /* フォントサイズ */
+      color: #141414;  /* 色 */
+    }
+  </style>
+</head>
+<body>
+  <div id="text">バージョン 1.0</div>
+</body>
+</html>
